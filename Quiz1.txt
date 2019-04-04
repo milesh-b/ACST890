@@ -1,0 +1,60 @@
+#Please find detailed explanations in the pdf file as this is a code summary.
+
+#Question 1
+
+#a)
+
+#To download the script
+curl https://www.staff.hs-mittweida.de/~wuenschi/data/media/compbiolbook/chapter-10-shell-programming--triplet-stop.sh  > triplet.sh
+#making the .sh file executable
+chmod u+x triplet.sh
+
+#b)
+
+#the bash script is as follows:
+
+#!/bin/bash
+# saved as triplet.sh
+# splits a sequence into triplets
+#the  [ -n ${1:$x:3} ] && [ ${#1} -ge 9 ] ensures that the string is not
+#empty and the string is greater then 9 characters. 
+x=0
+while [ -n "${1:$x:3}" ] && [ "${#1}" -ge 9 ]; do
+  seq=$seq${1:$x:3}" "
+  x=$(expr $x + 3)
+  if [ ${1:$x:3} == taa ] && [ $x -gt 6 ] ;then
+    break 
+  fi
+done
+echo "$seq"
+
+#to test the above script I used the following:
+./triplet.sh aataaq
+./triplet.sh aaaaaaaaaaaataaaaa
+./triplet.sh aaataaaaataa
+
+
+# Question 2
+#a)
+
+#To transfer the file from local maachine, I used scp (stared out due to privacy reasons)
+scp -i **420***.pem tutes.txt ******@ec2-**-**-**1-***.ap-southeast-2.compute.amazonaws.com:
+
+#To print unique items, I used the uniq function and also sort
+cat tutes.txt |sort|uniq
+
+
+#Question 3
+#Please find all the data sets and explanations in the pdf document.
+
+#a)
+egrep "^[[:alnum:]]+ {1,}[[:alnum:]]+ {1,}[[:alnum:]]+ {0,}+$" q3_a.txt
+
+#b)
+egrep "*-[[:digit:]]*" q3_b.txt | egrep -v [.]
+
+#c)
+egrep -o "[[:space:]](-|)0\.[[:digit:]]*[[:space:]]" q3_c.txt
+
+#d)
+egrep -w "(H|h)ydrogenase" q3_d.txt
