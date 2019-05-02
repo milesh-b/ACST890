@@ -1,0 +1,40 @@
+## Question a
+
+#To download the structure file and save it as sturucture.pdb use the #following command in your AWS instance.
+
+curl https://www.staff.hs-mittweida.de/~wuenschi/data/media/compbiolbook/chapter-11-regex--structure.pdb > structure.pdb
+
+#The code to convert Beisel to Weisel
+sed 's/Beisel/Weisel/g' structure.pdb
+
+##Question b
+#To delete the first 3 lines we use
+sed '1,3d' structure.pdb
+
+##Question c
+#To print only lines 5-10
+sed -n '5,10p' structure.pdb
+
+##Question d
+#To delete lines containing MET
+sed '/MET/d' structure.pdb
+
+##Question e
+#Print all lines where HELIX line contains the word ILE
+sed -n '/HELIX.*ILE/p' structure.pdb
+
+##Question f
+#Append *** to the end of lines starting with H
+sed '/^H/a***' structure.pdb
+
+##Question g
+#Replace the lines containing SEQRES with SEQ
+sed '/SEQRES/cSEQ' structure.pdb
+
+##Question h
+#To transfer the file i used scp (the output has been stared due to security reasons)
+scp -i 44***7**.pem jabberwocky.txt ubuntu@***-**-*-***-**6.**-****heast-*.compute.amazonaws.com: 
+
+#and to delete all blank line use
+sed '/^.$/d' jabberwocky.txt
+
