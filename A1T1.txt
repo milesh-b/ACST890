@@ -1,0 +1,101 @@
+#Q1
+#Download the twain.txt file and upload it using scp command
+#In python3
+
+text=open("twain.txt,"r")
+read=text.read()
+replaced=read.replace("Huck","HucK")
+
+
+
+#Q2
+# We first need to download stdio
+#Therefore use curl https://introcs.cs.princeton.edu/python/code/stdio.py >stdio.py
+#Save this script as as  useragument.py
+#Execute chmod u+x *.py
+
+import sys
+import stdio
+
+stdio.write('Hi, ')
+stdio.write(sys.argv[1])
+stdio.writeln('. How are you?')
+
+
+
+#Q3 test given integer is a leap year.
+# to run this script input and press enter:python3 q3.py
+# User enters the year
+year = int(input("Enter Year: "))
+# Leap Year Check
+if year % 4==0 and year %100!=0 or year%400==0:
+        print("Leap year")
+else:
+        print("Not a leap year")
+
+
+
+
+
+# Q4 program that takes 2 integers a and b from command line and writes
+# a random number between them.
+# To run this script, enter the following command and press enter: python3 q4.py <int a> <int b>
+import sys
+import random as rand
+
+a=int(sys.argv[1])
+b=int(sys.argv[2])
+c= (rand.randint(a,b))
+print ('A random value between %d and %d is %d' % (a,b,c)) 
+
+
+
+
+
+#question 5
+#program that takes two integers m and d from the command line
+# writes True if day is between March 20 and June 20
+#eg python3 q5.py <month> <day>
+
+import sys
+m= int(sys.argv[1])
+d= int(sys.argv[2])
+
+print ('You have inputed m=%d and d=%d' % (m,d))
+if 20<=d<=31 and m==3:
+        print("True")
+elif m==4 and 1<=d<=30:
+        print("True")
+elif m==5 and 1<=d<=31:
+        print("True")
+elif 1<=d<=20 and m==6:
+        print("True")
+else:
+        print("False")
+
+
+
+
+
+#question 6
+# program that calculates and writes the amount of money you would have
+# if you invested it at a given i rate.
+#eg python3 q6.py <principal> <intrate> <years>
+
+import sys
+import math as m
+principal = float(sys.argv[1])
+years = float(sys.argv[3])
+intrate =float(sys.argv[2])
+
+ans= principal*m.e**(intrate*years)
+print ('you would have %.2f if you invested %.2f at a rate of %.3f for %.3f years' % (ans,principal,intrate,years) )
+
+
+
+
+
+
+
+
+
